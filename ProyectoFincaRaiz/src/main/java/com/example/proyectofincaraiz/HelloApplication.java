@@ -1,4 +1,4 @@
-package com.example.proyectofinzaraiz;
+package com.example.proyectofincaraiz;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

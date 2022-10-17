@@ -1,4 +1,4 @@
-package com.example.proyectofinzaraiz;
+package com.example.proyectofincaraiz;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

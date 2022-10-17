@@ -1,4 +1,4 @@
-package com.example.proyectofinzaraiz.modelos.enums;
+package com.example.proyectofincaraiz.modelos.enums;
 
 public enum TipoUsuario {
     ADMIN,EMPLEADO,CLIENTE
