@@ -1,4 +1,4 @@
-package uniquindio.edu.co.prroyectofincaraiz;
+package com.example.proyectofinzaraiz;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

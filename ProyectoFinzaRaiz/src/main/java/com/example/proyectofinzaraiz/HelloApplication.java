@@ -1,4 +1,4 @@
-package uniquindio.edu.co.prroyectofincaraiz;
+package com.example.proyectofinzaraiz;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

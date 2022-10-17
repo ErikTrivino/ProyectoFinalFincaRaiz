@@ -1,4 +1,4 @@
-package uniquindio.edu.co.prroyectofincaraiz.modelos.enums;
+package com.example.proyectofinzaraiz.modelos.enums;
 
 public enum TipoVenta {
 

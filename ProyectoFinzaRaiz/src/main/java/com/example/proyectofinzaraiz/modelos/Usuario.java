@@ -1,4 +1,4 @@
-package uniquindio.edu.co.prroyectofincaraiz.modelos;
+package com.example.proyectofinzaraiz.modelos;
 
 import uniquindio.edu.co.prroyectofincaraiz.modelos.enums.TipoUsuario;
 
