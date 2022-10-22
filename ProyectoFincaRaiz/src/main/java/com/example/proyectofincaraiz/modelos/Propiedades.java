@@ -1,7 +1,9 @@
-package uniquindio.edu.co.prroyectofincaraiz.modelos;
+package com.example.proyectofincaraiz.modelos;
 
 
-import uniquindio.edu.co.prroyectofincaraiz.modelos.enums.*;
+import com.example.proyectofincaraiz.modelos.enums.TipoEstado;
+import com.example.proyectofincaraiz.modelos.enums.TipoVenta;
+
 
 public class Propiedades {
     private Integer id;
@@ -18,6 +20,12 @@ public class Propiedades {
     public Propiedades() {
     }
 
+    public Propiedades(Integer id, String direccion, Float valorVenta, String area) {
+        this.id = id;
+        this.direccion = direccion;
+        this.valorVenta = valorVenta;
+        this.area = area;
+    }
 
     public Propiedades(Integer id, String direccion, Float valorVenta, String area, Integer numCuartos, Integer numBanios, TipoEstado estado, TipoVenta tipoVenta, Usuario usuario) {
         this.id = id;
