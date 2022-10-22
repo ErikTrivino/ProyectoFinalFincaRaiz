@@ -1,9 +1,7 @@
 package com.example.proyectofincaraiz.modelos;
 
-
 import com.example.proyectofincaraiz.modelos.enums.TipoEstado;
 import com.example.proyectofincaraiz.modelos.enums.TipoVenta;
-
 
 public class Propiedades {
     private Integer id;
@@ -20,11 +18,15 @@ public class Propiedades {
     public Propiedades() {
     }
 
-    public Propiedades(Integer id, String direccion, Float valorVenta, String area) {
+
+    public Propiedades(Integer id, String direccion, Float valorVenta, String area, TipoEstado estado, TipoVenta tipoVenta, Usuario usuario) {
         this.id = id;
         this.direccion = direccion;
         this.valorVenta = valorVenta;
         this.area = area;
+        this.estado = estado;
+        this.tipoVenta = tipoVenta;
+        this.usuario = usuario;
     }
 
     public Propiedades(Integer id, String direccion, Float valorVenta, String area, Integer numCuartos, Integer numBanios, TipoEstado estado, TipoVenta tipoVenta, Usuario usuario) {
