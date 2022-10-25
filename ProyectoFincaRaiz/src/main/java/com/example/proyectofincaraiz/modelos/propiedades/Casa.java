@@ -1,11 +1,11 @@
 package com.example.proyectofincaraiz.modelos.propiedades;
 
-import com.example.proyectofincaraiz.modelos.Propiedades;
+import com.example.proyectofincaraiz.modelos.Propiedad;
 import com.example.proyectofincaraiz.modelos.Usuario;
 import com.example.proyectofincaraiz.modelos.enums.TipoEstado;
 import com.example.proyectofincaraiz.modelos.enums.TipoVenta;
 
-public class Casa extends Propiedades {
+public class Casa extends Propiedad {
 
     private Integer numeroPisos;
     private String material;

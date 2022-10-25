@@ -12,7 +12,9 @@ public class FincaRaiz {
     private String nit;
 
     private ArrayList<Usuario> usuarios = new ArrayList<>();
-    private ArrayList<Propiedades> propiedades = new ArrayList<>();
+    private ArrayList<Propiedad> propiedades = new ArrayList<>();
+
+    private ArrayList<Venta> ventas = new ArrayList<>();
 
     public FincaRaiz(String nombre, String nit) {
         this.nombre = nombre;
@@ -50,21 +52,77 @@ public class FincaRaiz {
         this.usuarios = usuarios;
     }
 
+    /*Todos los metodos q estan hechos solo es pura logica de CRUD, pero toca verifica todo con exceptions o ya se solo verificar que si sean o esten los datos*/
+
     /*******************************Metodos Propiedades************************************/
 
     //Metodo Agregar
+    public void agregarPropiedad(Propiedad propiedad){
+        //verificar Datos
+        propiedades.add(propiedad);
+    }
 
 
     //Metodo Desabilitar Propiedad
 
+    public void desabilitarPropiedad(Propiedad propiedad){
+
+        
+
+    }
+
     //Meotodo Cambiar tipó de venta
 
+    public void cambiarTipoVenta(Propiedad propiedad){
+
+    }
+
+    public void modificarPropiedad(Propiedad propiedad){
+        int pos = obtenerPosicionPropiedad(propiedad.getId());
+
+        propiedades.set(pos,propiedad);
+    }
+
+
+
+    //Puede recibir el id o  la propiedad
+    //Se coloca boolean por si no existe la propiedad
+    public boolean eliminarPropiedad(Propiedad propiedad) {
+        boolean flagEliminado = false;
+        do {
+            for (int i = 0; i < propiedades.size(); i++) {
+                if (propiedades.get(i).getId()== propiedad.getId()) {
+                    propiedades.remove(i);
+                    flagEliminado = true;
+
+                }
+            }
+        } while (flagEliminado == false);
+
+        return flagEliminado;
+
+    }
+
+
+
+    public int obtenerPosicionPropiedad(int id){
+        int pos = 0;
+        boolean flagEncontrado = false;
+        do {
+            for(int i = 0; i < propiedades.size(); i++){
+                if (propiedades.get(i).getId() == id) {
+                    pos = i;
+                    flagEncontrado = true;
+                }
+            }
+            if(flagEncontrado == false){
+                pos = -1;
+
+            }
+        }while(flagEncontrado == false && pos == 0);
+        return pos;
+    }
     
-
-
-
-
-
 
 
     /********************************Metodos Usuarios*********************************************/
@@ -74,6 +132,12 @@ public class FincaRaiz {
         //Falta verificar datos
 
     }
+
+    /*public void agregarUsuario(Usuario usuario){
+        usuarios.add(usuario);
+        //Falta verificar datos
+
+    }*/
 
     public boolean eliminarUsuario(Integer id){
         boolean flagEliminado = false;
@@ -88,9 +152,13 @@ public class FincaRaiz {
         } while (flagEliminado == false);
         return flagEliminado;
     }
-    public void modificarUsuario(){}
+    public void modificarUsuario(Usuario usuario){
+        //Usuario u1 = usuario;
+        int pos = obtenerPosicionUsuario(usuario.getId());
+        usuarios.set(pos, usuario);
+    }
 
-    /*public Usuario obtenerUsuario(Integer id){
+    public int obtenerPosicionUsuario(Integer id){
         int posicion = 0;
         boolean flagEncontrado = false;
         do {
@@ -108,9 +176,9 @@ public class FincaRaiz {
         }while(flagEncontrado == false);
 
 
-        return usuarios.get(posicion);
+        return posicion;
     }
-    */
+
 
     public Usuario obtenerUsuario(String id){
         int posicion = 0;
@@ -132,6 +200,21 @@ public class FincaRaiz {
 
         return usuarios.get(posicion);
     }
+
+    /***********************************Metodos  Venta *****************************************/
+
+    public void agregarVenta(Venta venta){
+        ventas.add(venta);
+
+    }
+
+    public ArrayList<Venta> buscarVentaPorFecha(){
+
+
+        return null;
+    }
+
+
 
 
 }
