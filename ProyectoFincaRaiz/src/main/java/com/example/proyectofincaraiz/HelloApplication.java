@@ -40,7 +40,7 @@ public class HelloApplication extends Application {
 
 
         if(ver.loginPaso1(usu,pass)){
-            System.out.println("hola" + empresa.obtenerUsuario(usu).toString());
+            System.out.println("hola" + empresa.buscarUsuarioByNombre(usu).get());
             System.out.println("Acceso concedido");
 
 

@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class Venta {
 
 
-    private int codigoFactura;
+    private Integer codigoFactura;
 
     private LocalDate fechaFactura;
     private Usuario usuarioCliente;

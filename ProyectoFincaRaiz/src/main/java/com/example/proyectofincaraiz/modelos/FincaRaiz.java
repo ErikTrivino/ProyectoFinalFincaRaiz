@@ -1,11 +1,18 @@
 package com.example.proyectofincaraiz.modelos;
 
+import com.example.proyectofincaraiz.exceptions.ElementoExisteException;
+import com.example.proyectofincaraiz.exceptions.ElementoNoExisteException;
+import com.example.proyectofincaraiz.exceptions.ValorRequeridoException;
 import com.example.proyectofincaraiz.modelos.enums.TipoEstado;
 import com.example.proyectofincaraiz.modelos.enums.TipoUsuario;
 import com.example.proyectofincaraiz.modelos.enums.TipoVenta;
 import com.example.proyectofincaraiz.modelos.propiedades.Lote;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class FincaRaiz {
     private String nombre;
@@ -57,26 +64,56 @@ public class FincaRaiz {
     /*******************************Metodos Propiedades************************************/
 
     //Metodo Agregar
-    public void agregarPropiedad(Propiedad propiedad){
+    public void agregarPropiedad(Propiedad propiedad) throws ElementoExisteException, ValorRequeridoException {
         //verificar Datos
+        if(buscarPropiedadByNumeroIdentificacion(propiedad.getId()).isPresent()){
+            throw new ElementoExisteException();
+        }
+        if(propiedad.getUsuario() == null){
+            throw new ValorRequeridoException("Propietario");
+        }
+        
         propiedades.add(propiedad);
     }
+
+    public Optional<Propiedad> buscarPropiedadByNumeroIdentificacion(Integer numeriIdentificacion) {
+        return propiedades.stream()
+                .filter(propiedad -> propiedad.getId() == numeriIdentificacion)
+                .findFirst();
+    }
+
 
 
     //Metodo Desabilitar Propiedad
 
     public void desabilitarPropiedad(Propiedad propiedad){
 
-        
+        int pos = obtenerPosicionPropiedad(propiedad.getId());
+
+        Propiedad propiedadCambio = propiedades.get(pos);
+
+        propiedadCambio.setEstado(TipoEstado.DESABILITADA);
+
+        propiedades.set(pos, propiedadCambio);
+
+
 
     }
 
     //Meotodo Cambiar tipó de venta
 
-    public void cambiarTipoVenta(Propiedad propiedad){
+    public void cambiarTipoVenta(Propiedad propiedad, TipoVenta tipoVenta){
+        int pos = obtenerPosicionPropiedad(propiedad.getId());
+
+        Propiedad propiedadCambio = propiedades.get(pos);
+
+        propiedadCambio.setTipoVenta(tipoVenta);
+
+        propiedades.set(pos, propiedadCambio);
 
     }
 
+    //nose si dejarlo
     public void modificarPropiedad(Propiedad propiedad){
         int pos = obtenerPosicionPropiedad(propiedad.getId());
 
@@ -87,7 +124,20 @@ public class FincaRaiz {
 
     //Puede recibir el id o  la propiedad
     //Se coloca boolean por si no existe la propiedad
-    public boolean eliminarPropiedad(Propiedad propiedad) {
+
+
+    //Se manda solo el ID??
+    public void eliminarPropiedad(Propiedad propiedad) throws ElementoNoExisteException {
+        Optional<Propiedad> propiedadCambio = buscarPropiedadByNumeroIdentificacion(propiedad.getId());
+        if( propiedadCambio.isEmpty() ){
+            throw new ElementoNoExisteException();
+        }
+        propiedades.remove(propiedadCambio.get());
+
+
+
+
+/*
         boolean flagEliminado = false;
         do {
             for (int i = 0; i < propiedades.size(); i++) {
@@ -99,7 +149,7 @@ public class FincaRaiz {
             }
         } while (flagEliminado == false);
 
-        return flagEliminado;
+        return flagEliminado;*/
 
     }
 
@@ -127,11 +177,29 @@ public class FincaRaiz {
 
     /********************************Metodos Usuarios*********************************************/
 
-    public void agregarUsuario(Integer id, String nombre, String correo, String contrasenia, String telefono, TipoUsuario tipoUsuario, String palabraSecreta){
-        usuarios.add(new Usuario(id, nombre, correo, contrasenia, telefono, tipoUsuario, palabraSecreta));
+    public void agregarUsuario(Usuario usuario) throws ElementoExisteException{
+
+        if(buscarUsuarioByNumeroIdentificacion(usuario.getId()).isPresent()){
+            throw new ElementoExisteException();
+        }
+        usuarios.add(usuario);
+
         //Falta verificar datos
 
     }
+
+    public Optional<Usuario> buscarUsuarioByNumeroIdentificacion(Integer numeriIdentificacion) {
+        return usuarios.stream()
+                .filter(usuario -> usuario.getId() == numeriIdentificacion)
+                .findFirst();
+    }
+
+    public Optional<Usuario> buscarUsuarioByNombre(String nombre) {
+        return usuarios.stream()
+                .filter(usuario -> usuario.getNombre().equals(nombre))
+                .findFirst();
+    }
+
 
     /*public void agregarUsuario(Usuario usuario){
         usuarios.add(usuario);
@@ -139,23 +207,21 @@ public class FincaRaiz {
 
     }*/
 
-    public boolean eliminarUsuario(Integer id){
-        boolean flagEliminado = false;
-        do {
-            for (int i = 0; i < usuarios.size(); i++) {
-                if (usuarios.get(i).getId() == id) {
-                    usuarios.remove(i);
-                    flagEliminado = true;
-
-                }
-            }
-        } while (flagEliminado == false);
-        return flagEliminado;
+    public void eliminarUsuario(Usuario usuario) throws  ElementoNoExisteException{
+        Optional<Usuario> usuarioCambio = buscarUsuarioByNumeroIdentificacion(usuario.getId());
+        if( usuarioCambio.isEmpty() ){
+            throw new ElementoNoExisteException();
+        }
+        propiedades.remove(usuarioCambio.get());
     }
+
+
+    //Cambio nose :v
     public void modificarUsuario(Usuario usuario){
         //Usuario u1 = usuario;
         int pos = obtenerPosicionUsuario(usuario.getId());
         usuarios.set(pos, usuario);
+
     }
 
     public int obtenerPosicionUsuario(Integer id){
@@ -203,15 +269,43 @@ public class FincaRaiz {
 
     /***********************************Metodos  Venta *****************************************/
 
-    public void agregarVenta(Venta venta){
+    public void agregarVenta(Venta venta) throws ElementoExisteException{
+
+        if(buscarVentaByCodigoFactura(venta.getCodigoFactura()).isPresent()){
+            throw new ElementoExisteException();
+        }
         ventas.add(venta);
 
     }
 
-    public ArrayList<Venta> buscarVentaPorFecha(){
+    public Optional<Venta> buscarVentaByCodigoFactura(Integer numeriIdentificacion) {
+        return ventas.stream()
+                .filter(usuario -> usuario.getCodigoFactura() == numeriIdentificacion)
+                .findFirst();
+    }
+
+    public ArrayList<Venta> buscarVentaPorFecha(LocalDate dateIncio, LocalDate dateFinal){
+       return (ArrayList<Venta>) ventas.stream()
+               .filter(x -> x.getFechaFactura().isAfter(dateIncio))
+                .filter(x -> x.getFechaFactura().isBefore(dateFinal))
+               .sorted(Comparator.comparing(Venta::getFechaFactura))
+              // .map(venta -> (Venta) venta)
+                .collect(Collectors.toList());
 
 
-        return null;
+
+    }
+
+    ////////////////////METODO PAAR OBETNER DIFERENTES TIPOS DE USUARIOS ///////////////
+    /*
+    * Con el fin de buscar propiestarios para poder crear el objeto propiedad
+    * */
+
+    public ArrayList<Usuario> buscarUsuariosPorParametro(TipoUsuario tipoUsuario){
+
+       return (ArrayList<Usuario>) usuarios.stream()
+                .filter(x -> x.getTipoUsuario() == tipoUsuario)
+                .collect(Collectors.toList());
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.proyectofincaraiz.modelos;
 
+import com.example.proyectofincaraiz.modelos.enums.TipoEstado;
 import com.example.proyectofincaraiz.modelos.enums.TipoUsuario;
 
 
@@ -12,6 +13,8 @@ public class Usuario {
     private TipoUsuario tipoUsuario;
 
     private String palabraSecreta;
+
+    private TipoEstado tipoEstado;
 
     public String getPalabraSecreta() {
         return palabraSecreta;
@@ -33,6 +36,16 @@ public class Usuario {
         this.telefono = telefono;
         this.tipoUsuario = tipoUsuario;
         this.palabraSecreta = palabraSecreta;
+        this.tipoEstado = TipoEstado.HABILITADA;
+
+    }
+
+    public TipoEstado getTipoEstado() {
+        return tipoEstado;
+    }
+
+    public void setTipoEstado(TipoEstado tipoEstado) {
+        this.tipoEstado = tipoEstado;
     }
 
     public Integer getId() {
