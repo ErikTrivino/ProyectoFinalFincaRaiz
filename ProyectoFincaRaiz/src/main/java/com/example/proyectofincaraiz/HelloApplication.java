@@ -4,6 +4,7 @@ import com.example.proyectofincaraiz.modelos.FincaRaiz;
 import com.example.proyectofincaraiz.modelos.Usuario;
 import com.example.proyectofincaraiz.modelos.enums.TipoUsuario;
 import com.example.proyectofincaraiz.modelos.login.PalabraSecreta;
+import com.example.proyectofincaraiz.modelos.login.Registro;
 import com.example.proyectofincaraiz.modelos.login.Verificador;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +25,9 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
-        FincaRaiz empresa = new FincaRaiz("Gods", "431113");
+
+      /*  FincaRaiz empresa = new FincaRaiz("Gods", "431113");
+
 
 
 
@@ -53,7 +56,7 @@ public class HelloApplication extends Application {
         }
 
 
-        }
+        }*/
 
         launch();
     }
