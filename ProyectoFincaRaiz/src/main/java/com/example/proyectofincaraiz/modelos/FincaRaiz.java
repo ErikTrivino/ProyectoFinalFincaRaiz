@@ -11,6 +11,7 @@ import com.example.proyectofincaraiz.modelos.propiedades.Lote;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -308,7 +309,35 @@ public class FincaRaiz {
                 .collect(Collectors.toList());
     }
 
-
-
-
+    public boolean verificarUsuario(String usuario){
+        if(usuario != null){
+            return true;
+        }
+        return false;
+    }
+    public Usuario existeUsuario(String usuario){
+        List<Usuario> usuarios1 = usuarios;
+        Usuario usuarioEncontrado = null;
+        for(Usuario nombre : usuarios){
+            if(nombre.getNombre().equals(usuario))
+                usuarioEncontrado = (Usuario) usuarios1;
+        }
+        return usuarioEncontrado;
+    }
+    public boolean validarPassword(String userName, String password){
+        boolean acceso = false;
+        Usuario usuarioValido = existeUsuario(userName);
+        if(usuarioValido.getContrasenia().equals(password)){
+            acceso = true;
+        }
+        return acceso;
+    }
+    public boolean validarPalabraSecreta(String userName, String palabraSecreta){
+        boolean acceso = false;
+        Usuario usuarioValido = existeUsuario(userName);
+        if(usuarioValido.getPalabraSecreta().equals(palabraSecreta)){
+            acceso = true;
+        }
+        return acceso;
+    }
 }
