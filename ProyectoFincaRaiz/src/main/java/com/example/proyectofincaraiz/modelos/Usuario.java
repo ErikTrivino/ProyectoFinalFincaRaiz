@@ -1,29 +1,51 @@
 package com.example.proyectofincaraiz.modelos;
 
-import uniquindio.edu.co.prroyectofincaraiz.modelos.enums.TipoUsuario;
+import com.example.proyectofincaraiz.modelos.enums.TipoEstado;
+import com.example.proyectofincaraiz.modelos.enums.TipoUsuario;
+
 
 public class Usuario {
     private Integer id;
     private String nombre;
     private String correo;
-    private String contasenia;
+    private String contrasenia;
     private String telefono;
     private TipoUsuario tipoUsuario;
 
+    private String palabraSecreta;
 
+    private TipoEstado tipoEstado;
 
+    public String getPalabraSecreta() {
+        return palabraSecreta;
+    }
+
+    public void setPalabraSecreta(String palabraSecreta) {
+        this.palabraSecreta = palabraSecreta;
+    }
 
     public Usuario() {
 
     }
 
-    public Usuario(Integer id, String nombre, String correo, String contasenia, String telefono, TipoUsuario tipoUsuario) {
+    public Usuario(Integer id, String nombre, String correo, String contrasenia, String telefono, TipoUsuario tipoUsuario, String palabraSecreta) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
-        this.contasenia = contasenia;
+        this.contrasenia = contrasenia;
         this.telefono = telefono;
         this.tipoUsuario = tipoUsuario;
+        this.palabraSecreta = palabraSecreta;
+        this.tipoEstado = TipoEstado.HABILITADA;
+
+    }
+
+    public TipoEstado getTipoEstado() {
+        return tipoEstado;
+    }
+
+    public void setTipoEstado(TipoEstado tipoEstado) {
+        this.tipoEstado = tipoEstado;
     }
 
     public Integer getId() {
@@ -50,12 +72,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getContasenia() {
-        return contasenia;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setContasenia(String contasenia) {
-        this.contasenia = contasenia;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public String getTelefono() {
@@ -72,5 +94,33 @@ public class Usuario {
 
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public boolean validar(String contrasenia) {
+        try {
+            if (this.contrasenia.equalsIgnoreCase(contrasenia)) {
+                //System.out.println("las contraseñas coinciden");
+                return true;
+            } else {
+                //System.out.println("Las contraseñas no coinciden");
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", correo='" + correo + '\'' +
+                ", contrasenia='" + contrasenia + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", tipoUsuario=" + tipoUsuario +
+                ", palabraSecreta='" + palabraSecreta + '\'' +
+                '}';
     }
 }
