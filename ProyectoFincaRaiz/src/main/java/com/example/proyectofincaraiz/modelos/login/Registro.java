@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-public class Registro {
+public class Registro extends Usuario {
     ConectorMySQL conec = new ConectorMySQL();
 
     //generar la conexion
@@ -20,13 +20,13 @@ public class Registro {
             String SQL_INSERT = "INSERT INTO usuarios VALUES(?,?,?,?,?,?,?)";
 
             PreparedStatement pstm = conectar.prepareStatement(SQL_INSERT);
-            pstm.setString(1, "5343232121");
-            pstm.setString(2, "raul");
-            pstm.setString(3, "12314123");
-            pstm.setString(4, "blasdasd");
-            pstm.setString(5, "31231432");
-            pstm.setString(6, "ADMIN");
-            pstm.setString(7, "gato");
+            pstm.setInt(1, getId());
+            pstm.setString(2, getNombre());
+            pstm.setString(3, getContrasenia());
+            pstm.setString(4, getCorreo());
+            pstm.setString(5, getTelefono());
+            pstm.setObject(6, getTipoUsuario());
+            pstm.setString(7, getPalabraSecreta());
 
             pstm.executeUpdate();
 

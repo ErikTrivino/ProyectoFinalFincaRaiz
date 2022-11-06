@@ -1,5 +1,7 @@
 package com.example.proyectofincaraiz;
 
+import com.example.proyectofincaraiz.modelos.Usuario;
+import com.example.proyectofincaraiz.modelos.enums.TipoUsuario;
 import com.example.proyectofincaraiz.modelos.login.Registro;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,7 +31,10 @@ public class HelloController {
     private TextArea txt_id;
 
     @FXML
-    private TextArea txt_tipouser;
+     TipoUsuario tipoUsuario(){
+        TipoUsuario usuario = TipoUsuario.PROPIETARIO;
+        return usuario;
+    }
 
     @FXML
     private TextArea txt_nombre;
@@ -38,6 +43,9 @@ public class HelloController {
     public void onHelloButtonClick(ActionEvent actionEvent) {
         Registro persona=new Registro();
         persona.guardarUsuario();
+
     }
+    Usuario usuario = new Usuario(Integer.valueOf(txt_id.getText()),txt_nombre.getText(),txt_correo.getText(),txt_pw.getText(),txt_telefono.getText(),tipoUsuario(),txt_palabraSecreta.getText());
+
 
     }
