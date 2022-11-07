@@ -20,8 +20,8 @@ public class FincaRaiz {
         this.nombre = nombre;
         this.nit = nit;
 
-        usuarios.add(new Usuario(1234, "erik", "erik@", "1234", "3104433", TipoUsuario.ADMIN, "amarillo"));
-        usuarios.add(new Usuario(1234, "ana", "ana@", "4321", "3042211", TipoUsuario.EMPLEADO, "eli"));
+        usuarios.add(new Usuario("1234", "erik", "erik@", "1234", "3104433", TipoUsuario.ADMIN, "amarillo"));
+        usuarios.add(new Usuario("1234", "ana", "ana@", "4321", "3042211", TipoUsuario.EMPLEADO, "eli"));
 
         propiedades.add(new Lote(1234, "Carrera 17A-Bogota", 1000000f, "Urbano", TipoEstado.HABILITADA, TipoVenta.VENTA, usuarios.get(0)));
 
@@ -127,7 +127,7 @@ public class FincaRaiz {
 
     /********************************Metodos Usuarios*********************************************/
 
-    public void agregarUsuario(Integer id, String nombre, String correo, String contrasenia, String telefono, TipoUsuario tipoUsuario, String palabraSecreta){
+    public void agregarUsuario(String id, String nombre, String correo, String contrasenia, String telefono, TipoUsuario tipoUsuario, String palabraSecreta){
         usuarios.add(new Usuario(id, nombre, correo, contrasenia, telefono, tipoUsuario, palabraSecreta));
         //Falta verificar datos
 
@@ -139,11 +139,11 @@ public class FincaRaiz {
 
     }*/
 
-    public boolean eliminarUsuario(Integer id){
+    public boolean eliminarUsuario(String id){
         boolean flagEliminado = false;
         do {
             for (int i = 0; i < usuarios.size(); i++) {
-                if (usuarios.get(i).getId() == id) {
+                if (usuarios.get(i).getId().equals(id)) {
                     usuarios.remove(i);
                     flagEliminado = true;
 
@@ -154,7 +154,7 @@ public class FincaRaiz {
     }
     public void modificarUsuario(Usuario usuario){
         //Usuario u1 = usuario;
-        int pos = obtenerPosicionUsuario(usuario.getId());
+        int pos = obtenerPosicionUsuario(Integer.valueOf(usuario.getId()));
         usuarios.set(pos, usuario);
     }
 
@@ -163,7 +163,7 @@ public class FincaRaiz {
         boolean flagEncontrado = false;
         do {
             for(int i = 0; i < usuarios.size(); i++){
-                if (usuarios.get(i).getId() == (id)) {
+                if (usuarios.get(i).getId().equals(id)) {
                     posicion = i;
                     flagEncontrado = true;
                 }

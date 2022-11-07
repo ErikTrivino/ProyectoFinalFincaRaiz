@@ -20,7 +20,7 @@ public class Registro extends Usuario {
             String SQL_INSERT = "INSERT INTO usuarios VALUES(?,?,?,?,?,?,?)";
 
             PreparedStatement pstm = conectar.prepareStatement(SQL_INSERT);
-            pstm.setInt(1, getId());
+            pstm.setString(1, getId());
             pstm.setString(2, getNombre());
             pstm.setString(3, getContrasenia());
             pstm.setString(4, getCorreo());
