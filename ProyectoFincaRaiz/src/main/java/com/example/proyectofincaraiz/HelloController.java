@@ -7,61 +7,57 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
 
     @FXML
-    private TextArea txt_nombre;
-
+    public TextField txtNombre;
     @FXML
-    private TextArea txt_correo;
-
+    public TextField txtCedula;
     @FXML
-    private TextArea txt_palabraSecreta;
-
+    public TextField txtTelefono;
     @FXML
-    private TextArea txt_telefono;
-
+    public TextField txtCorreo;
     @FXML
-    private TextArea txt_pw;
-
+    public TextField txtContrasenia;
     @FXML
-    private TextArea txt_id;
-
+    public TextField txtsecreta;
 
 
     @FXML
      TipoUsuario tipoUser(){
-        TipoUsuario usuario = TipoUsuario.PROPIETARIO;
-        return usuario;
+        return TipoUsuario.PROPIETARIO;
     }
 
 
 
     @FXML
     public void onHelloButtonClick(ActionEvent actionEvent) {
-        TextArea textArea = new TextArea();
+        String cedula=txtCedula.getText();
+        String nombre=txtNombre.getText();
+        String correo=txtCorreo.getText();
+        String contrasenia= txtContrasenia.getText();
+        String telefono=txtTelefono.getText();
+        TipoUsuario tipo =tipoUser();
+        String secreta = txtsecreta.getText();
+
+
+        Usuario usuario1 =new Usuario(cedula,nombre,correo,contrasenia,telefono,tipo,secreta);
 
         Registro persona= new Registro();
-
-
-
-        persona.guardarUsuario();
-
+        persona.guardarUsuario(usuario1);
     }
+
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Inicializando");
-
 
 
     }

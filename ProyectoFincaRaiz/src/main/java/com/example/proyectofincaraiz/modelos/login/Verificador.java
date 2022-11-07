@@ -29,9 +29,9 @@ public abstract class Verificador {
     }
 
 
-    public boolean borrarUsuario(Usuario usuario) {
+  /*  public boolean borrarUsuario(Usuario usuario) {
         return usuarios.remove(usuario.getNombre(), usuario);
-    }
+    }*/
 
     //public abstract String loginPaso1(String login, String password);
     public abstract boolean loginPaso1(String login, String password);

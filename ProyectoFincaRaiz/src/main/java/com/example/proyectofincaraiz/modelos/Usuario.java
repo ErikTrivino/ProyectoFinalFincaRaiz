@@ -21,9 +21,14 @@ public class Usuario {
         this.palabraSecreta = palabraSecreta;
     }
 
-    public Usuario() {
 
+    public Usuario() {
     }
+
+
+
+
+
 
     public Usuario(String id, String nombre, String correo, String contrasenia, String telefono, TipoUsuario tipoUsuario, String palabraSecreta) {
         this.id = id;
@@ -98,7 +103,7 @@ public class Usuario {
         return false;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "Usuario{" +
                 "id=" + id +
@@ -109,5 +114,5 @@ public class Usuario {
                 ", tipoUsuario=" + tipoUsuario +
                 ", palabraSecreta='" + palabraSecreta + '\'' +
                 '}';
-    }
+    }*/
 }
