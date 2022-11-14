@@ -24,37 +24,6 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
-        FincaRaiz empresa = new FincaRaiz("Gods", "431113");
-
-
-
-        String pass = "1234";
-        String usu = "erik";
-
-        Verificador ver = new PalabraSecreta(3);
-        for(int i = 0; i < empresa.getUsuarios().size(); i++){
-            ver.nuevoUsuario(empresa.getUsuarios().get(i));
-        }
-
-
-
-
-        if(ver.loginPaso1(usu,pass)){
-            System.out.println("hola" + empresa.buscarUsuarioByNombre(usu).get());
-            System.out.println("Acceso concedido");
-
-
-        }else{
-            System.out.println("Ingrese su palaabra secreta");
-            String palabraSe = "amarillo";
-            if(ver.loginPaso2("erik", palabraSe)){
-                System.out.println("Accesoo concedido");
-
-        }
-
-
-        }
-
         launch();
     }
 }

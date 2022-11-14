@@ -29,8 +29,8 @@ public class FincaRaiz {
         this.nombre = nombre;
         this.nit = nit;
 
-        usuarios.add(new Usuario("1234", "erik", "erik@", "1234", "3104433", TipoUsuario.ADMIN, "amarillo"));
-        usuarios.add(new Usuario("1234", "ana", "ana@", "4321", "3042211", TipoUsuario.EMPLEADO, "eli"));
+        usuarios.add(new PersonaEmpresa("1234", "Erik", "erikp@", "31238833", TipoUsuario.ADMIN, "Amarillo123", "Hola mundo"));
+
 
         propiedades.add(new Lote("1234", "Carrera 17A-Bogota", 1000000f, "Urbano", TipoEstado.HABILITADA, TipoVenta.VENTA, usuarios.get(0)));
 
@@ -345,7 +345,7 @@ public class FincaRaiz {
 
     public boolean validarPassword(String userName, String password){
         boolean acceso = false;
-        Usuario usuarioValido = buscarUsuarioByNombre(userName).get();
+        PersonaEmpresa usuarioValido = (PersonaEmpresa) buscarUsuarioByNombre(userName).get();
 
         //Usuario usuarioValido = existeUsuario(userName);
 
@@ -356,7 +356,7 @@ public class FincaRaiz {
     }
     public boolean validarPalabraSecreta(String userName, String palabraSecreta){
         boolean acceso = false;
-        Usuario usuarioValido = buscarUsuarioByNombre(userName).get();
+        PersonaEmpresa usuarioValido = (PersonaEmpresa) buscarUsuarioByNombre(userName).get();
         if(usuarioValido.getPalabraSecreta().equals(palabraSecreta)){
             acceso = true;
         }

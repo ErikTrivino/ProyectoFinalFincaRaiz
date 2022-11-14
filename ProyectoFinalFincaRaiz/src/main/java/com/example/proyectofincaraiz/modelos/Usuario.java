@@ -4,38 +4,32 @@ import com.example.proyectofincaraiz.modelos.enums.TipoEstado;
 import com.example.proyectofincaraiz.modelos.enums.TipoUsuario;
 
 
-public class Usuario {
+public abstract class Usuario {
     private String id;
     private String nombre;
     private String correo;
-    private String contrasenia;
+
     private String telefono;
     private TipoUsuario tipoUsuario;
 
-    private String palabraSecreta;
+
 
     private TipoEstado tipoEstado;
 
-    public String getPalabraSecreta() {
-        return palabraSecreta;
-    }
 
-    public void setPalabraSecreta(String palabraSecreta) {
-        this.palabraSecreta = palabraSecreta;
-    }
 
     public Usuario() {
 
     }
 
-    public Usuario(String id, String nombre, String correo, String contrasenia, String telefono, TipoUsuario tipoUsuario, String palabraSecreta) {
+    public Usuario(String id, String nombre, String correo, String telefono, TipoUsuario tipoUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
-        this.contrasenia = contrasenia;
+
         this.telefono = telefono;
         this.tipoUsuario = tipoUsuario;
-        this.palabraSecreta = palabraSecreta;
+
         this.tipoEstado = TipoEstado.HABILITADA;
 
     }
@@ -72,13 +66,7 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
-    }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
 
     public String getTelefono() {
         return telefono;
@@ -96,31 +84,17 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public boolean validar(String contrasenia) {
-        try {
-            if (this.contrasenia.equalsIgnoreCase(contrasenia)) {
-                //System.out.println("las contraseñas coinciden");
-                return true;
-            } else {
-                //System.out.println("Las contraseñas no coinciden");
-                return false;
-            }
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
-        return false;
-    }
+
 
     @Override
     public String toString() {
         return "Usuario{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", correo='" + correo + '\'' +
-                ", contrasenia='" + contrasenia + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", tipoUsuario=" + tipoUsuario +
-                ", palabraSecreta='" + palabraSecreta + '\'' +
+                ", tipoEstado=" + tipoEstado +
                 '}';
     }
 }
