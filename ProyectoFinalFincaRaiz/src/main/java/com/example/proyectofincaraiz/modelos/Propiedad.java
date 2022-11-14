@@ -4,12 +4,11 @@ import com.example.proyectofincaraiz.modelos.enums.TipoEstado;
 import com.example.proyectofincaraiz.modelos.enums.TipoVenta;
 
 public class Propiedad {
-    private Integer id;
+    private String id;
     private String direccion;
     private Float valorVenta;
     private String area;
-    private Integer numCuartos;
-    private Integer numBanios;
+
     private TipoEstado estado;
     private TipoVenta tipoVenta;
     private Usuario usuario;
@@ -19,7 +18,7 @@ public class Propiedad {
     }
 
 
-    public Propiedad(Integer id, String direccion, Float valorVenta, String area, TipoEstado estado, TipoVenta tipoVenta, Usuario usuario) {
+    public Propiedad(String id, String direccion, Float valorVenta, String area, TipoEstado estado, TipoVenta tipoVenta, Usuario usuario) {
         this.id = id;
         this.direccion = direccion;
         this.valorVenta = valorVenta;
@@ -29,25 +28,14 @@ public class Propiedad {
         this.usuario = usuario;
     }
 
-    public Propiedad(Integer id, String direccion, Float valorVenta, String area, Integer numCuartos, Integer numBanios, TipoEstado estado, TipoVenta tipoVenta, Usuario usuario) {
-        this.id = id;
-        this.direccion = direccion;
-        this.valorVenta = valorVenta;
-        this.area = area;
-        this.numCuartos = numCuartos;
-        this.numBanios = numBanios;
-        this.estado = estado;
-        this.tipoVenta = tipoVenta;
-        this.usuario = usuario;
-    }
 
 
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -75,21 +63,9 @@ public class Propiedad {
         this.area = area;
     }
 
-    public Integer getNumCuartos() {
-        return numCuartos;
-    }
 
-    public void setNumCuartos(Integer numCuartos) {
-        this.numCuartos = numCuartos;
-    }
 
-    public Integer getNumBanios() {
-        return numBanios;
-    }
 
-    public void setNumBanios(Integer numBanios) {
-        this.numBanios = numBanios;
-    }
 
     public TipoEstado getEstado() {
         return estado;

@@ -7,7 +7,7 @@ import com.example.proyectofincaraiz.modelos.enums.TipoVenta;
 
 public class Bodega extends Propiedad {
 
-    public Bodega(Integer id, String direccion, Float valorVenta, String area, TipoEstado estado, TipoVenta tipoVenta, Usuario usuario) {
+    public Bodega(String id, String direccion, Float valorVenta, String area, TipoEstado estado, TipoVenta tipoVenta, Usuario usuario) {
         super(id, direccion, valorVenta, area, estado, tipoVenta, usuario);
     }
 }

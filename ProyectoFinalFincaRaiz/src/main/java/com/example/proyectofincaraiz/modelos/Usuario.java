@@ -5,7 +5,7 @@ import com.example.proyectofincaraiz.modelos.enums.TipoUsuario;
 
 
 public class Usuario {
-    private Integer id;
+    private String id;
     private String nombre;
     private String correo;
     private String contrasenia;
@@ -28,7 +28,7 @@ public class Usuario {
 
     }
 
-    public Usuario(Integer id, String nombre, String correo, String contrasenia, String telefono, TipoUsuario tipoUsuario, String palabraSecreta) {
+    public Usuario(String id, String nombre, String correo, String contrasenia, String telefono, TipoUsuario tipoUsuario, String palabraSecreta) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
@@ -48,11 +48,11 @@ public class Usuario {
         this.tipoEstado = tipoEstado;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
