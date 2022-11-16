@@ -4,7 +4,7 @@ import com.example.proyectofincaraiz.modelos.enums.TipoVenta;
 
 import java.time.LocalDate;
 
-public class Venta {
+public class Negocio {
 
 
     private Integer codigoFactura;
@@ -17,7 +17,7 @@ public class Venta {
     private Double totalVenta;
 
 
-    public Venta(int codigoFactura, LocalDate fechaFactura, Usuario usuarioCliente, Usuario usuarioVenta, Propiedad propiedad, TipoVenta tipoVenta, Double totalVenta) {
+    public Negocio(int codigoFactura, LocalDate fechaFactura, Usuario usuarioCliente, Usuario usuarioVenta, Propiedad propiedad, TipoVenta tipoVenta, Double totalVenta) {
         this.codigoFactura = codigoFactura;
         this.fechaFactura = fechaFactura;
         this.usuarioCliente = usuarioCliente;

@@ -268,7 +268,7 @@ public class FincaRaiz {
 
     /***********************************Metodos  Venta *****************************************/
 
-    public void agregarVenta(Venta venta, Usuario operario) throws ElementoExisteException, CredencialNoValida {
+    public void agregarVenta(Negocio venta, Usuario operario) throws ElementoExisteException, CredencialNoValida {
         if(operario.getTipoUsuario() == TipoUsuario.ADMIN || operario.getTipoUsuario() == TipoUsuario.EMPLEADO) {
 
             if (buscarVentaByCodigoFactura(venta.getCodigoFactura()).isPresent()) {
@@ -281,13 +281,13 @@ public class FincaRaiz {
 
     }
 
-    public Optional<Venta> buscarVentaByCodigoFactura(Integer numeriIdentificacion) {
+    public Optional<Negocio> buscarVentaByCodigoFactura(Integer numeriIdentificacion) {
         return ventas.stream()
                 .filter(usuario -> usuario.getCodigoFactura() == numeriIdentificacion)
                 .findFirst();
     }
 
-    public ArrayList<Venta> buscarVentaPorFecha(LocalDate dateIncio, LocalDate dateFinal, Usuario operario) throws CredencialNoValida {
+    public ArrayList<Negocio> buscarVentaPorFecha(LocalDate dateIncio, LocalDate dateFinal, Usuario operario) throws CredencialNoValida {
 
         if(operario.getTipoUsuario() == TipoUsuario.ADMIN || operario.getTipoUsuario() == TipoUsuario.EMPLEADO) {
 
